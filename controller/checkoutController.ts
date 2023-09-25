@@ -5,10 +5,10 @@ import { HTTP } from "../Error/mainError";
 
 export const checkOutWithPayStack = async (req: Request, res: Response) => {
     try {
-        const { amount } = req.body;
+        const { email, amount } = req.body;
 
         const params = JSON.stringify({
-            email: "customer@email.com",
+            email: email,
             amount: amount * 100,
         });
 
