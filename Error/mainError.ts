@@ -30,7 +30,7 @@ export enum HTTP{
          if (this.success !== undefined){
              this.success == args.success 
          }
- 
+         Error.captureStackTrace(this);
          
        } 
  }
