@@ -3,7 +3,7 @@ import https from "https";
 import { HTTP } from "../Error/mainError";
 
 
-export const payment = async (req: Request, res: Response) => {
+export const checkOutWithPayStack = async (req: Request, res: Response) => {
     try {
         const { amount } = req.body;
 
