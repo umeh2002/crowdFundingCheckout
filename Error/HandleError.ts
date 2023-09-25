@@ -11,7 +11,7 @@ res.status(HTTP.BAD_REQUEST).json({
 })
 }
 
-export const handleError = (
+export const HandleError = (
     err: mainError,
     req: Request,
     res : Response,

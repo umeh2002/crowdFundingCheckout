@@ -1,6 +1,8 @@
-import express, { Application,Request, Response } from 'express';
+import express, { Application,Request, Response, NextFunction } from 'express';
 import cors from "cors"
 import checkout from "./router/checkoutRouter" 
+import { HTTP, mainError } from './Error/mainError';
+import {HandleError} from "./Error/HandleError"
 
 export const mainApp =(app:Application)=>{
 app.use(express.json())
@@ -18,6 +20,19 @@ try {
     })
 }
 })
+
+app.all("*", (req : Request, res : Response, next : NextFunction)=>{
+    next(
+        new mainError({
+            name : "Router Error",
+            message : "this router path is not correct",
+            status : HTTP.BAD_REQUEST,
+            success : false,
+        })
+    )
+})
+
+app.use(HandleError)
 
 app.use("/api/checkout", checkout)
 }
