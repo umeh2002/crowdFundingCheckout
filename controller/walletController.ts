@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 
 export const payWithWallet = async (req : Request, res : Response) =>{
     try {
-        // const {id} = req.users
+        const {id} = req.users
         const {abegID} = req.params
         const { email, note, name, amount } = req.body
 
