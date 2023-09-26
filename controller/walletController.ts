@@ -1,18 +1,18 @@
 import { PrismaClient } from "@prisma/client";
-import { Request, Response } from "express";
+import { Response } from "express";
 import {HTTP} from "../Error/mainError"
 
 const prisma = new PrismaClient()
 
-export const payWithWallet = async (req : Request, res : Response) =>{
+export const payWithWallet = async (req : any, res : Response) =>{
     try {
-        const {id} = req.users
+        const {id} = req.user
         const {abegID} = req.params
         const { email, note, name, amount } = req.body
 
         const payment = await prisma.checkOut.create({
             data : {
-                email, note, name, amount, abegID, userID : ""
+                email, note, name, amount, abegID, userID : id
             }
         })
 
