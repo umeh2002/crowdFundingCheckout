@@ -21,6 +21,8 @@ try {
 }
 })
 
+app.use("/api", checkout)
+
 app.all("*", (req : Request, res : Response, next : NextFunction)=>{
     next(
         new mainError({
@@ -34,5 +36,4 @@ app.all("*", (req : Request, res : Response, next : NextFunction)=>{
 
 app.use(HandleError)
 
-app.use("/api", checkout)
 }
