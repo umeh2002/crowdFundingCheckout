@@ -10,7 +10,7 @@ export const payWithWallet = async (req : any, res : Response) =>{
         const {abegID} = req.params
         const { email, note, name, amount } = req.body
 
-        const payment = await prisma.checkOut.create({
+        const payment = await prisma.crowdCheckOut.create({
             data : {
                 email, note, name, amount, abegID, userID : id
             }
