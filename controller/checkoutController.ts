@@ -4,15 +4,16 @@ import { HTTP } from "../Error/mainError";
 
 export const checkOutWithPayStack = async (req: Request, res: Response) => {
   try {
-    const { amount } = req.body;
+    const {amount } = req.body;
     // const {abegID} = req.params
 
     const params = JSON.stringify({
-      email: "customer@email.com",
+      email:"customer@gmail.com",
       amount: amount * 100,
       // abegID
     });
-
+// console.log("showing email",email)
+console.log("showing amount",amount)
     const options = {
       hostname: "api.paystack.co",
       port: 443,
@@ -46,9 +47,10 @@ export const checkOutWithPayStack = async (req: Request, res: Response) => {
 
     ask.write(params);
     ask.end();
-  } catch (error) {
+  } catch (error:any) {
     return res.status(HTTP.BAD_REQUEST).json({
       message: "Error making Payment",
+      data:error.message
     });
   }
 };

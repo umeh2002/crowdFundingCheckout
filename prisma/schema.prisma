@@ -14,7 +14,7 @@ model crowdCheckOut{
   id String @id @default(uuid())
 
   name String
-  email String
+  email String @unique
   note String
 
   abegID String

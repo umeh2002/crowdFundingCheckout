@@ -11,3 +11,6 @@ CREATE TABLE "crowdCheckOut" (
 
     CONSTRAINT "crowdCheckOut_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "crowdCheckOut_email_key" ON "crowdCheckOut"("email");
