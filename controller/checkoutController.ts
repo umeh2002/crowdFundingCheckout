@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 
 export const checkOutWithPayStack = async (req: Request, res: Response) => {
   try {
-    const {email,amount } = req.body;
+    const {email,amount} = req.body;
     // const {abegID} = req.params
 
     const params = JSON.stringify({
