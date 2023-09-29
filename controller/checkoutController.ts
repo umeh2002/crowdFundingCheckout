@@ -1,6 +1,9 @@
 import express, { Request, Response } from "express";
 import https from "https";
 import { HTTP } from "../Error/mainError";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient()
 
 export const checkOutWithPayStack = async (req: Request, res: Response) => {
   try {
@@ -12,8 +15,6 @@ export const checkOutWithPayStack = async (req: Request, res: Response) => {
       amount: amount * 100,
       // abegID
     });
-// console.log("showing email",email)
-console.log("showing amount",amount)
     const options = {
       hostname: "api.paystack.co",
       port: 443,
@@ -54,3 +55,4 @@ console.log("showing amount",amount)
     });
   }
 };
+

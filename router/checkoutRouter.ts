@@ -2,7 +2,7 @@ import express from "express"
 import { payWithWallet } from "../controller/walletController"
 
 // import { checkOut } from "../utils/CheckVerify"
-import { checkOutWithPayStack } from "../controller/checkoutController"
+import { checkOutWithPayStack} from "../controller/checkoutController"
 
 const router = express.Router()
 
