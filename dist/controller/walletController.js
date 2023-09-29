@@ -11,8 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.payWithWallet = void 0;
 const mainError_1 = require("../Error/mainError");
-const client_1 = require("@prisma/client");
-const prisma = new client_1.PrismaClient();
+const edge_1 = require("@prisma/client/edge");
+const prisma = new edge_1.PrismaClient();
 const payWithWallet = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // const {id} = req.user
