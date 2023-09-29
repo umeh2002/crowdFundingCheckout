@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkOutWithPayStack = void 0;
 const https_1 = __importDefault(require("https"));
 const mainError_1 = require("../Error/mainError");
-const client_1 = require("@prisma/client");
-const prisma = new client_1.PrismaClient();
+const edge_1 = require("@prisma/client/edge");
+const prisma = new edge_1.PrismaClient();
 const checkOutWithPayStack = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, amount } = req.body;
