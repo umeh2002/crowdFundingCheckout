@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@prisma/client": "^5.2.0",
+    "@prisma/client": "^5.3.1",
     "@types/amqplib": "^0.10.2",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.14",
@@ -20,7 +20,8 @@
     "joi": "^17.10.1",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.4"
+    "nodemailer": "^6.9.4",
+    "prisma": "^5.3.1"
   },
   "name": "verification2",
   "version": "1.0.0",
@@ -28,8 +29,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev index.ts",
-    "start" : "node ./dist/index.js",
-    "build" : "tsc"
+    "start": "node ./dist/index.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
