@@ -15,12 +15,12 @@ const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const payWithWallet = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // const {id} = req.user
-        // const {abegID} = req.params
+        const { id } = req.user;
+        const { abegID } = req.params;
         const { email, note, name, amount } = req.body;
         const payment = yield prisma.crowdCheckOut.create({
             data: {
-                email, note, name, amount, abegID: "", userID: ""
+                email, note, name, amount, abegID, userID: id
             }
         });
         return res.status(mainError_1.HTTP.OK).json({
