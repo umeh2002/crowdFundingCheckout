@@ -26,12 +26,6 @@ export const payWithWallet = async (req : any, res : Response) =>{
 
         console.log(wallet.profile.walletBalance)
 
-        console.log("name",name)
-
-        console.log("email",email)
-
-        console.log(typeof amount)
-
            if (wallet.profile.walletBalance > amount) {
             const payment = await prisma.crowdCheckOut.create({
                 data : {
