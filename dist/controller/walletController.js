@@ -32,9 +32,6 @@ const payWithWallet = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             return res.data.data;
         });
         console.log(wallet.profile.walletBalance);
-        console.log("name", name);
-        console.log("email", email);
-        console.log(typeof amount);
         if (wallet.profile.walletBalance > amount) {
             const payment = yield prisma.crowdCheckOut.create({
                 data: {
