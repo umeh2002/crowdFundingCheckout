@@ -20,6 +20,7 @@ const publishConnection = (queue, data) => __awaiter(void 0, void 0, void 0, fun
         const connect = yield amqplib_1.default.connect(amqpServer);
         const channel = yield connect.createChannel();
         yield channel.sendToQueue(queue, Buffer.from(JSON.stringify(data)));
+        console.log('Sent queue');
     }
     catch (error) {
         console.log(error);

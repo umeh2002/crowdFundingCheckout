@@ -16,15 +16,16 @@ exports.checkOutWithPayStack = void 0;
 const https_1 = __importDefault(require("https"));
 const mainError_1 = require("../Error/mainError");
 const edge_1 = require("@prisma/client/edge");
+const connection_1 = require("../utils/connection");
 const prisma = new edge_1.PrismaClient();
 const checkOutWithPayStack = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, amount } = req.body;
-        // const {abegID} = req.params
+        const { abegID } = req.params;
         const params = JSON.stringify({
             email,
-            amount: amount * 100,
-            // abegID
+            amount: parseInt(amount),
+            abegID
         });
         const options = {
             hostname: "api.paystack.co",
@@ -55,6 +56,7 @@ const checkOutWithPayStack = (req, res) => __awaiter(void 0, void 0, void 0, fun
         });
         ask.write(params);
         ask.end();
+        (0, connection_1.publishConnection)("checkouted", params);
     }
     catch (error) {
         return res.status(mainError_1.HTTP.BAD_REQUEST).json({
