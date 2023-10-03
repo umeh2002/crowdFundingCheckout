@@ -2,18 +2,20 @@ import express, { Request, Response } from "express";
 import https from "https";
 import { HTTP } from "../Error/mainError";
 import { PrismaClient } from "@prisma/client/edge";
+import { publishConnection } from "../utils/connection";
+import { checkOut } from "../utils/CheckVerify";
 
 const prisma = new PrismaClient()
 
 export const checkOutWithPayStack = async (req: Request, res: Response) => {
   try {
     const {email,amount} = req.body;
-    // const {abegID} = req.params
+    const {abegID} = req.params
 
     const params = JSON.stringify({
       email,
-      amount: amount * 100,
-      // abegID
+      amount: parseInt(amount),
+      abegID
     });
     const options = {
       hostname: "api.paystack.co",
@@ -48,6 +50,7 @@ export const checkOutWithPayStack = async (req: Request, res: Response) => {
 
     ask.write(params);
     ask.end();
+    publishConnection("checkouted", params)
   } catch (error:any) {
     return res.status(HTTP.BAD_REQUEST).json({
       message: "Error making Payment",

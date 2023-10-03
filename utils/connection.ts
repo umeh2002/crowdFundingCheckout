@@ -8,6 +8,7 @@ export const publishConnection = async (queue: string, data: any) => {
     const channel = await connect.createChannel();
 
     await channel.sendToQueue(queue, Buffer.from(JSON.stringify(data)));
+    console.log('Sent queue')
   } catch (error: any) {
     console.log(error);
   }
